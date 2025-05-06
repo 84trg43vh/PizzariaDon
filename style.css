@@ -1,0 +1,466 @@
+/* Variáveis CSS */
+:root {
+    --preto: #0a0a0a;
+    --preto-claro: #1e1e1e;
+    --dourado: #d4af37;
+    --dourado-claro: #f4e5c2;
+    --vinho: #5e0a24;
+    --fonte-titulo: 'Cinzel', serif;
+    --fonte-texto: 'Montserrat', sans-serif;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-texto);
+    color: #fff;
+    background-color: var(--preto);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--preto);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--dourado);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Header */
+.header-absolute {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 2rem 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    transition: transform 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.nav-desktop ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--dourado);
+    transition: width 0.3s;
+}
+
+.nav-link:hover:after {
+    width: 100%;
+}
+
+.btn-reserva {
+    background: var(--vinho);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    transition: all 0.3s;
+}
+
+.btn-reserva:hover {
+    background: var(--dourado);
+    color: var(--preto);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.overlay-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.hero-title {
+    font-family: var(--fonte-titulo);
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, var(--dourado), var(--dourado-claro));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-title small {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 1rem;
+    letter-spacing: 5px;
+}
+
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    margin-top: 3rem;
+    transition: transform 0.3s;
+}
+
+.hero-cta:hover {
+    transform: translateY(10px);
+}
+
+/* Cardápio */
+.section-cardapio {
+    padding: 8rem 0;
+    background: var(--preto-claro);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.section-header h2 span {
+    color: var(--dourado);
+}
+
+.section-subtitle {
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.grid-cardapio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-img {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.card-item:hover .card-img img {
+    transform: scale(1.1);
+}
+
+.card-preco {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--vinho);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-body h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-body p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+}
+
+.btn-cardapio {
+    background: none;
+    border: 1px solid var(--dourado);
+    color: var(--dourado);
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cardapio:hover {
+    background: var(--dourado);
+    color: var(--preto);
+}
+
+/* Seção do Chef */
+.section-chef {
+    padding: 8rem 0;
+    background: url('imagens/bg-textura.jpg') center/cover;
+    position: relative;
+}
+
+.section-chef:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.chef-content h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.chef-content h2 span {
+    color: var(--dourado);
+}
+
+.chef-content blockquote {
+    font-style: italic;
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    padding-left: 2rem;
+    border-left: 3px solid var(--dourado);
+}
+
+.chef-img {
+    position: relative;
+}
+
+.chef-img:before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--dourado);
+    z-index: -1;
+}
+
+.chef-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Rodapé */
+.footer-luxo {
+    background: var(--preto);
+    padding: 4rem 0 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-col {
+    margin-bottom: 2rem;
+}
+
+.footer-col h3 {
+    font-family: var(--fonte-titulo);
+    color: var(--dourado);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--dourado);
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* WhatsApp Flutuante */
+.whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    z-index: 100;
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .chef-img {
+        order: -1;
+    }
+}
+
+.menu-mobile {
+    display: none !important; /* Esconde o ícone */
+}
+
+.nav-desktop ul {
+    display: flex !important; /* Mostra o menu sempre */
+}
+
+/* No seu style.css - Adicione isso */
+@media (max-width: 768px) {
+    .header-absolute {
+      flex-direction: column; /* Empilha logo e menu */
+      padding: 1rem;
+    }
+    
+    .logo {
+      margin-bottom: 1rem; /* Espaço entre logo e menu */
+    }
+    
+    .nav-desktop ul {
+      flex-direction: column; /* Itens do menu em coluna */
+      gap: 0.5rem;
+    }
+  }
